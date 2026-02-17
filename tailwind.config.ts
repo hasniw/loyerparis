@@ -5,8 +5,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
-        accent: { 50: '#fef3c7', 100: '#fde68a', 200: '#fcd34d', 300: '#fbbf24', 400: '#f59e0b', 500: '#d97706' },
+        navy: { 900: '#0f172a', 800: '#1e293b', 700: '#334155', 600: '#475569' },
+        accent: { 50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' },
+        primary: { 50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12' },
+      },
+      fontFamily: {
+        sans: ['var(--font-jakarta)', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'slide-up': 'slideUp 0.6s ease-out forwards',
+        'count-up': 'countUp 1s ease-out forwards',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+        slideUp: { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+        glow: { '0%': { boxShadow: '0 0 5px rgba(249,115,22,0.3)' }, '100%': { boxShadow: '0 0 20px rgba(249,115,22,0.6), 0 0 40px rgba(249,115,22,0.2)' } },
       },
     },
   },

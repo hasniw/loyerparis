@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' });
 
 export const metadata: Metadata = {
   title: { default: 'LoyerParis - Prix des loyers à Paris et Île-de-France 2026', template: '%s | LoyerParis' },
@@ -13,42 +17,33 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className="min-h-screen flex flex-col">
-        <header className="border-b bg-white sticky top-0 z-50">
-          <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <Link href="/" className="text-xl font-bold text-primary-700">🏠 LoyerParis</Link>
-            <div className="flex gap-6 text-sm font-medium text-gray-600">
-              <Link href="/" className="hover:text-primary-600">Accueil</Link>
-              <Link href="/blog/prix-loyer-paris-2026" className="hover:text-primary-600">Blog</Link>
-              <Link href="#estimez" className="hover:text-primary-600">Estimer</Link>
-            </div>
-          </nav>
-        </header>
-        <main className="flex-1">{children}</main>
-        <footer className="bg-gray-900 text-gray-400 py-12">
+    <html lang="fr" className={jakarta.variable}>
+      <body className="min-h-screen flex flex-col font-sans">
+        <Navbar />
+        <main className="flex-1 pt-16">{children}</main>
+        <footer className="bg-navy-800/50 border-t border-white/5 py-12">
           <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
             <div>
-              <h3 className="text-white font-semibold mb-3">LoyerParis</h3>
-              <p>Prix des loyers à Paris et Île-de-France. Données mises à jour en 2026.</p>
+              <h3 className="text-white font-semibold mb-3"><span className="text-accent-500">Loyer</span>Paris</h3>
+              <p className="text-gray-500">Prix des loyers à Paris et Île-de-France. Données mises à jour en 2026.</p>
             </div>
             <div>
               <h3 className="text-white font-semibold mb-3">Navigation</h3>
-              <ul className="space-y-1">
-                <li><Link href="/" className="hover:text-white">Accueil</Link></li>
-                <li><Link href="/blog/prix-loyer-paris-2026" className="hover:text-white">Blog</Link></li>
-                <li><Link href="/paris-1er" className="hover:text-white">Paris 1er</Link></li>
+              <ul className="space-y-1 text-gray-500">
+                <li><Link href="/" className="hover:text-accent-400 transition-colors">Accueil</Link></li>
+                <li><Link href="/blog/prix-loyer-paris-2026" className="hover:text-accent-400 transition-colors">Blog</Link></li>
+                <li><Link href="/paris-1er" className="hover:text-accent-400 transition-colors">Paris 1er</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-white font-semibold mb-3">Ressources</h3>
-              <ul className="space-y-1">
-                <li><a href="https://www.paris.fr/pages/l-encadrement-des-loyers-parisiens-en-vigueur-le-1er-aout-5309" target="_blank" className="hover:text-white">Encadrement des loyers</a></li>
-                <li><a href="https://www.anil.org" target="_blank" className="hover:text-white">ANIL</a></li>
+              <ul className="space-y-1 text-gray-500">
+                <li><a href="https://www.paris.fr/pages/l-encadrement-des-loyers-parisiens-en-vigueur-le-1er-aout-5309" target="_blank" className="hover:text-accent-400 transition-colors">Encadrement des loyers</a></li>
+                <li><a href="https://www.anil.org" target="_blank" className="hover:text-accent-400 transition-colors">ANIL</a></li>
               </ul>
             </div>
           </div>
-          <div className="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-xs text-center">© 2026 LoyerParis. Données indicatives.</div>
+          <div className="max-w-6xl mx-auto px-4 mt-8 pt-8 border-t border-white/5 text-xs text-center text-gray-600">© 2026 LoyerParis. Données indicatives.</div>
         </footer>
       </body>
     </html>
