@@ -36,21 +36,21 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="max-w-3xl mx-auto px-4 py-12">
         <nav className="text-sm text-gray-500 mb-6">
-          <Link href="/" className="hover:text-primary-600">Accueil</Link>
-          <span className="mx-2">›</span>
-          <Link href="/blog/prix-loyer-paris-2026" className="hover:text-primary-600">Blog</Link>
-          <span className="mx-2">›</span>
-          <span className="text-gray-800">{post.title}</span>
+          <Link href="/" className="hover:text-accent-400 transition-colors">Accueil</Link>
+          <span className="mx-2 text-gray-600">›</span>
+          <Link href="/" className="hover:text-accent-400 transition-colors">Blog</Link>
+          <span className="mx-2 text-gray-600">›</span>
+          <span className="text-gray-300">{post.title}</span>
         </nav>
         <div className="text-sm text-gray-400 mb-4">{post.date} · {post.readTime} de lecture</div>
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-8">{post.title}</h1>
-        <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-primary-600" dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
-        <div className="mt-12 pt-8 border-t">
-          <h3 className="font-bold text-lg mb-4">Autres articles</h3>
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-8 text-white">{post.title}</h1>
+        <div className="prose prose-lg prose-invert max-w-none prose-headings:text-white prose-a:text-accent-400 prose-p:text-gray-300 prose-strong:text-white prose-li:text-gray-300" dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>') }} />
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <h3 className="font-bold text-lg mb-4 text-white">Autres articles</h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {blogPosts.filter(p => p.slug !== post.slug).slice(0, 4).map(p => (
-              <Link key={p.slug} href={`/blog/${p.slug}`} className="border rounded-lg p-4 hover:shadow transition-all">
-                <div className="font-semibold group-hover:text-primary-600">{p.title}</div>
+              <Link key={p.slug} href={`/blog/${p.slug}`} className="glass-card-hover p-4 block">
+                <div className="font-semibold text-white">{p.title}</div>
                 <div className="text-xs text-gray-400 mt-1">{p.readTime}</div>
               </Link>
             ))}
