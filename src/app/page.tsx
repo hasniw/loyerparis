@@ -31,6 +31,28 @@ export default function Home() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "Organization",
+        name: "LoyerParis", url: "https://loyerparis.vercel.app",
+        description: "Prix des loyers à Paris et Île-de-France en 2026"
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: "https://loyerparis.vercel.app" },
+          { "@type": "ListItem", position: 2, name: "Blog", item: "https://loyerparis.vercel.app/blog/prix-loyer-paris-2026" }
+        ]
+      }) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: [
+          { "@type": "Question", name: "Quel est le prix moyen d'un loyer à Paris en 2026 ?", acceptedAnswer: { "@type": "Answer", text: "Le loyer moyen à Paris est d'environ 30€/m². Il varie de 25€/m² dans le 19e à 38€/m² dans le 6e arrondissement." }},
+          { "@type": "Question", name: "Quels sont les arrondissements les moins chers de Paris ?", acceptedAnswer: { "@type": "Answer", text: "Les 19e, 20e et 13e arrondissements sont les plus abordables, avec des loyers moyens entre 25€ et 28€/m²." }},
+          { "@type": "Question", name: "L'encadrement des loyers s'applique-t-il à Paris ?", acceptedAnswer: { "@type": "Answer", text: "Oui, l'encadrement des loyers est en vigueur à Paris depuis 2019. Le loyer ne peut pas dépasser un plafond fixé par arrêté préfectoral selon le quartier et le type de logement." }},
+          { "@type": "Question", name: "Comment estimer le loyer d'un appartement à Paris ?", acceptedAnswer: { "@type": "Answer", text: "Utilisez notre outil d'estimation gratuit. Le loyer dépend de l'arrondissement, de la surface, du type de logement et de l'état du bien." }},
+          { "@type": "Question", name: "Les loyers en Île-de-France sont-ils moins chers qu'à Paris ?", acceptedAnswer: { "@type": "Answer", text: "Oui, les loyers en IDF sont 30% à 50% moins chers. Boulogne-Billancourt et Neuilly restent proches des prix parisiens, tandis que des villes comme Montreuil ou Créteil sont plus abordables." }}
+        ]
+      }) }} />
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden -mt-16">
         <HeroScene />
@@ -172,6 +194,32 @@ export default function Home() {
                   <h3 className="font-bold text-lg mb-2 text-white group-hover:text-accent-400 transition-colors">{p.title}</h3>
                   <p className="text-sm text-gray-500 line-clamp-3">{p.excerpt}</p>
                 </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </FadeSection>
+
+      {/* FAQ */}
+      <FadeSection delay={100}>
+        <section className="py-20">
+          <div className="max-w-3xl mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-2">Questions fréquentes</h2>
+            <p className="text-gray-500 mb-10">Tout savoir sur les loyers à Paris</p>
+            <div className="space-y-4">
+              {[
+                { q: "Quel est le prix moyen d'un loyer à Paris en 2026 ?", a: "Le loyer moyen à Paris est d'environ 30€/m². Il varie de 25€/m² dans le 19e à 38€/m² dans le 6e arrondissement." },
+                { q: "Quels sont les arrondissements les moins chers ?", a: "Les 19e, 20e et 13e arrondissements sont les plus abordables, avec des loyers moyens entre 25€ et 28€/m²." },
+                { q: "L'encadrement des loyers s'applique-t-il à Paris ?", a: "Oui, depuis 2019. Le loyer ne peut pas dépasser un plafond fixé par arrêté préfectoral selon le quartier et le type de logement." },
+                { q: "Comment estimer le loyer d'un appartement ?", a: "Utilisez notre outil d'estimation gratuit ci-dessous. Le loyer dépend de l'arrondissement, de la surface et du type de logement." },
+                { q: "Les loyers en IDF sont-ils moins chers ?", a: "Oui, 30% à 50% moins chers en moyenne. Boulogne et Neuilly restent proches des prix parisiens, Montreuil ou Créteil sont plus abordables." },
+              ].map((faq, i) => (
+                <FadeSection key={i} delay={i * 60}>
+                  <div className="glass-card p-6">
+                    <h3 className="font-bold text-lg text-white mb-2">{faq.q}</h3>
+                    <p className="text-gray-400 leading-relaxed">{faq.a}</p>
+                  </div>
+                </FadeSection>
               ))}
             </div>
           </div>

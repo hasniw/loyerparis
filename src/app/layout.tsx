@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={jakarta.variable}>
       <body className="min-h-screen flex flex-col font-sans">
         <Navbar />
+        <Analytics />
         <main className="flex-1 pt-16">{children}</main>
         <footer className="bg-navy-800/50 border-t border-white/5 py-12">
           <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-sm">
