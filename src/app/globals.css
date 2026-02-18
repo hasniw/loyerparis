@@ -16,7 +16,7 @@
     @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
   }
   .glass-card-hover {
-    @apply glass-card transition-all duration-400 hover:bg-white/[0.08] hover:border-accent-500/25 hover:shadow-[0_8px_30px_rgba(249,115,22,0.08)] hover:-translate-y-1;
+    @apply glass-card transition-all duration-300 hover:bg-white/[0.08] hover:border-accent-500/25 hover:shadow-[0_8px_30px_rgba(249,115,22,0.08)] hover:-translate-y-1;
   }
   .section-dark {
     @apply bg-navy-900;
