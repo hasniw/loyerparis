@@ -13,10 +13,10 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
   }
   .glass-card-hover {
-    @apply glass-card transition-all duration-300 hover:bg-white/10 hover:border-accent-500/30 hover:shadow-lg hover:shadow-accent-500/10 hover:-translate-y-1;
+    @apply glass-card transition-all duration-400 hover:bg-white/[0.08] hover:border-accent-500/25 hover:shadow-[0_8px_30px_rgba(249,115,22,0.08)] hover:-translate-y-1;
   }
   .section-dark {
     @apply bg-navy-900;
@@ -28,39 +28,45 @@
     @apply bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent;
   }
   .glow-border {
-    @apply border border-accent-500/50 shadow-[0_0_15px_rgba(249,115,22,0.15)];
+    @apply border border-accent-500/40 shadow-[0_0_20px_rgba(249,115,22,0.1)];
   }
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0f172a; }
-::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: #2a3548; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #475569; }
-
-/* Counter animation */
-@property --num {
-  syntax: '<integer>';
-  initial-value: 0;
-  inherits: false;
-}
-
-.counter {
-  animation: counter 2s ease-out forwards;
-  counter-reset: num var(--num);
-}
-
-@keyframes counter {
-  from { --num: 0; }
-}
 
 /* Fade in on scroll */
 .fade-section {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fade-section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Card gradient border */
+.card-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(249, 115, 22, 0.2), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.card-accent:hover::before {
+  opacity: 1;
 }
